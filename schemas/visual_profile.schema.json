@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kid Story Visual Profile",
+  "type": "object",
+  "required": ["age", "hair_length", "hair_style", "hair_color", "skin_tone", "outfit", "signature_gesture", "art_style"],
+  "properties": {
+    "age": {"type": "integer", "minimum": 3, "maximum": 8},
+    "hair_length": {"type": "string"},
+    "hair_style": {"type": "string"},
+    "hair_color": {"type": "string"},
+    "skin_tone": {"type": "string"},
+    "glasses": {"type": "boolean", "default": false},
+    "outfit": {
+      "type": "object",
+      "required": ["top", "bottom", "shoes", "palette"],
+      "properties": {
+        "top": {"type": "string"},
+        "bottom": {"type": "string"},
+        "shoes": {"type": "string"},
+        "palette": {"type": "array", "items": {"type": "string"}, "minItems": 1, "maxItems": 4}
+      }
+    },
+    "signature_gesture": {"type": "string"},
+    "favorite_activity": {"type": "string"},
+    "fixed_object": {"type": ["string", "null"]},
+    "expression_range": {"type": "array", "items": {"type": "string"}},
+    "art_style": {
+      "type": "object",
+      "required": ["medium", "tone", "detail_level"],
+      "properties": {
+        "medium": {"type": "string"},
+        "tone": {"type": "string"},
+        "detail_level": {"type": "string"},
+        "avoid": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "privacy_mode": {"type": "string", "enum": ["photo_free", "photo_assisted"], "default": "photo_free"}
+  }
+}
