@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kid Story Intake v0.1",
+  "type": "object",
+  "required": [
+    "child_alias",
+    "age",
+    "topic",
+    "real_scene",
+    "parent_goal",
+    "story_style",
+    "safety_status"
+  ],
+  "properties": {
+    "case_id": {"type": "string"},
+    "child_alias": {"type": "string", "description": "暱稱即可，避免真實完整姓名"},
+    "age": {"type": "integer", "minimum": 3, "maximum": 6},
+    "topic": {"type": "string"},
+    "real_scene": {"type": "string"},
+    "child_possible_concern": {"type": ["string", "null"]},
+    "likes": {"type": "array", "items": {"type": "string"}},
+    "important_people_or_objects": {"type": "array", "items": {"type": "string"}},
+    "family_specific_details": {"type": "array", "items": {"type": "string"}},
+    "parent_goal": {"type": "string"},
+    "small_action": {"type": ["string", "null"]},
+    "avoid": {"type": "array", "items": {"type": "string"}},
+    "story_style": {"type": "string", "enum": ["安靜溫柔", "有一點冒險", "輕鬆幽默"]},
+    "reading_minutes": {"type": ["integer", "null"], "minimum": 3, "maximum": 20},
+    "safety_status": {"type": "string", "enum": ["PASS", "REVIEW", "OUT_OF_SCOPE"]},
+    "safety_reason": {"type": ["string", "null"]},
+    "versions": {
+      "type": "object",
+      "properties": {
+        "questionnaire": {"type": "string"},
+        "story_engine": {"type": "string"},
+        "safety": {"type": "string"},
+        "qa": {"type": "string"},
+        "orchestrator": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}
