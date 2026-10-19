@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kid Story Feedback v0.1",
+  "type": "object",
+  "required": ["case_id", "stage", "scores", "liked", "frictions", "price_hesitation"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "stage": {"type": "string", "enum": ["immediate", "48h", "7d"]},
+    "scores": {
+      "type": "object",
+      "properties": {
+        "onboarding_clarity": {"type": "integer", "minimum": 1, "maximum": 5},
+        "intake_effort": {"type": "integer", "minimum": 1, "maximum": 5},
+        "understanding_accuracy": {"type": "integer", "minimum": 1, "maximum": 5},
+        "personalization": {"type": "integer", "minimum": 1, "maximum": 5},
+        "read_aloud_quality": {"type": "integer", "minimum": 1, "maximum": 5},
+        "child_engagement": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "low_preachiness": {"type": "integer", "minimum": 1, "maximum": 5},
+        "low_ai_feel": {"type": "integer", "minimum": 1, "maximum": 5},
+        "parent_value": {"type": "integer", "minimum": 1, "maximum": 5},
+        "willingness_to_pay": {"type": "integer", "minimum": 1, "maximum": 5}
+      },
+      "additionalProperties": false
+    },
+    "liked": {"type": "array", "items": {"type": "string"}},
+    "frictions": {"type": "array", "items": {"type": "string"}},
+    "price_hesitation": {"type": "string"},
+    "observations": {"type": "array", "items": {"type": "string"}},
+    "priority": {"type": "string", "enum": ["P0", "P1", "P2"]},
+    "category": {"type": "string", "enum": ["BUG", "CONTENT", "SAFETY", "UX", "VALUE", "VISUAL"]},
+    "contains_real_child_pii": {"const": false}
+  },
+  "additionalProperties": false
+}
